@@ -1,0 +1,9 @@
+{
+  "name": "snacker",
+  "version": "1.0.0",
+  "description": "A simple snackbar implementation ",
+  "main": "index.js",
+  "repository": "git@github.com:dealloc/snacker.git",
+  "author": "Wannes Gennar <wannes.gennar@gmail.com>",
+  "license": "MIT"
+}

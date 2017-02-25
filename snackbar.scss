@@ -1,0 +1,70 @@
+$snackbar-background: rgba(51, 51, 51, 0.9) !default;
+$snackbar-color: #00DDFF !default;
+$snackbar-error: #FF0400 !default;
+$snackbar-warning: #FFFB00 !default;
+
+#snackbar-container {
+	display: flex;
+	justify-content: center;
+	text-align: center;
+
+	#snackbar {
+		// display: none;
+		min-width: 250px;
+		background-color: $snackbar-background;
+		color: $snackbar-color;
+		text-align: center;
+		border-radius: 2px;
+		padding: 16px;
+		position: fixed;
+		z-index: 50;
+		bottom: 30px;
+		animation: snackbar-fadeOut 0.5s 2.5s forwards;
+		-webkit-backface-visibility: hidden;
+
+		button {
+			background-color: transparent;
+			border: none;
+			color: #FFFB00;
+			&:focus {
+				outline: none;
+			}
+		}
+
+		&.error {
+			color: $snackbar-error;
+		}
+		&.warning {
+			color: $snackbar-warning;
+
+			button {
+				color: $snackbar-color;
+			}
+		}
+
+		&.active {
+			display: block;
+			animation: snackbar-fadeIn 0.5s forwards;
+		}
+	}
+}
+
+@-webkit-keyframes snackbar-fadeIn {
+	from {bottom: 0; opacity: 0;}
+	to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes snackbar-fadeIn {
+	from {bottom: 0; opacity: 0;}
+	to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes snackbar-fadeOut {
+	from {bottom: 30px; opacity: 1;}
+	to {bottom: 0; opacity: 0;}
+}
+
+@keyframes snackbar-fadeOut {
+	from {bottom: 30px; opacity: 1;}
+	to {bottom: 0; opacity: 0;}
+}
