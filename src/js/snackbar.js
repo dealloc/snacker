@@ -1,3 +1,5 @@
+import '../scss/snackbar.scss';
+
 const CONTAINER_ID = 'snackbar-container';
 const SNACKBAR_ID = 'snackbar';
 const ACTION_ID = 'snackbar-action';
