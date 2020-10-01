@@ -1,5 +1,5 @@
 const path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const source = path.resolve(__dirname, 'src');
 
@@ -12,22 +12,31 @@ module.exports = {
 		libraryTarget: 'umd',
 	},
 	module: {
-		loaders: [
+		rules: [
 			{
 				test: /\.js$/,
 				exclude: /node_modules/,
-				loader: 'babel-loader',
-			},
+				use: {
+				  loader: 'babel-loader',
+				  options: {
+					presets: ['@babel/preset-env']
+				  }
+				}
+			  },
 			{
 				test: /\.scss$/,
-				loaders: ExtractTextPlugin.extract({
-					use: ['css-loader', 'sass-loader'],
-					fallback: 'style-loader',
-				}),
+				use: [
+                    MiniCssExtractPlugin.loader,
+					'css-loader',
+					'sass-loader'
+				],
 			},
 		],
 	},
 	plugins: [
-		new ExtractTextPlugin('snackbar.css'),
+		new MiniCssExtractPlugin({
+			filename: "[name].[contenthash].css",
+			chunkFilename: "[id].[contenthash].css"
+		})
 	],
 };
